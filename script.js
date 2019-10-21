@@ -51,7 +51,7 @@ function determineWinner () {
 	}
 };
 
-//eventlisteners & determine if it's red or blue
+//eventlisteners & determine if it's red or blue; don't change background once selected
 for (let i=0; i<boxes.length; i++){
 	boxes[i].addEventListener("click", setBackground);
 	function setBackground (evt){
