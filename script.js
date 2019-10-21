@@ -53,26 +53,26 @@ function determineWinner () {
 
 //eventlisteners & determine if it's red or blue
 for (let i=0; i<boxes.length; i++){
-	boxes[i].addEventListener("click", function(evt){
+	boxes[i].addEventListener("click", setBackground);
+	function setBackground (evt){
 		evt.preventDefault();
 		if (redOrBlue%2 === 0){
 			this.style.backgroundColor = "red";
 			determineWinner();
 			redOrBlue = redOrBlue +=1;
 			turn.innerText = "Blue team's turn.";
-			//removeEventListener
+			evt.target.removeEventListener("click", setBackground);
+			console.log("clicked!")
 		} else {
 			this.style.backgroundColor = "blue";
 			determineWinner();
 			redOrBlue = redOrBlue +=1;
 			turn.innerText = "Red team's turn.";
-			//removeEventListener
+			evt.target.removeEventListener("click", setBackground);
+			console.log("clicked!")
 		} 
-	})
+	}
 };
-
-
-//make sure you can't change the square's color!!!
 
 // reset (play again) button
 for (let i=0; i<boxes.length; i++){
