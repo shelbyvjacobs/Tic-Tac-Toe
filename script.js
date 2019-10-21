@@ -12,6 +12,8 @@ const B3 = document.querySelector("#B3");
 const C1 = document.querySelector("#C1");
 const C2 = document.querySelector("#C2");
 const C3 = document.querySelector("#C3");
+const turnSpan = document.querySelector("#turnSpan")
+let turn = document.querySelector("#turn")
 let redOrBlue = 0;
 
 function determineWinner () {
@@ -26,6 +28,7 @@ function determineWinner () {
 		(A1.style.backgroundColor == "red" && B2.style.backgroundColor == "red" && C3.style.backgroundColor == "red")||
 		(A3.style.backgroundColor == "red" && B2.style.backgroundColor == "red" && C1.style.backgroundColor == "red")
 	){
+		turn.innerText = "Red team wins!" //doesn't work
 		console.log("Red team wins!")
 	} else if (
 		(A1.style.backgroundColor == "blue" && A2.style.backgroundColor == "blue" && A3.style.backgroundColor == "blue")||
@@ -37,9 +40,10 @@ function determineWinner () {
 		(A1.style.backgroundColor == "blue" && B2.style.backgroundColor == "blue" && C3.style.backgroundColor == "blue")||
 		(A3.style.backgroundColor == "blue" && B2.style.backgroundColor == "blue" && C1.style.backgroundColor == "blue")
 	){
+		turn.innerText = "Blue team wins!" //doesn't work
 		console.log("Blue team wins!")
 	} else {
-		console.log("It's a draw!")
+		console.log("Keep Playing!")
 	}
 };
 
@@ -52,14 +56,14 @@ determineWinner();
 			evt.preventDefault();
 			if (redOrBlue%2 === 0){
 				this.style.backgroundColor = "red"
+				determineWinner();
 				redOrBlue = redOrBlue +=1;
-				console.log("Blue team's turn.")
-					//change to .innerText
+				turn.innerText = "Blue team's turn.";
 			} else {
 				this.style.backgroundColor = "blue"
+				determineWinner();
 				redOrBlue = redOrBlue +=1;
-				console.log("Red team's turn.")
-					//change to .innerText
+				turn.innerText = "Red team's turn.";
 			} 
 		})
 	}
