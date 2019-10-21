@@ -16,34 +16,34 @@ let redOrBlue = 0;
 
 function determineWinner () {
 //determine all scenarios; conditional statement
-	//row1
-	if (A1.style.backgroundColor == "red" && A2.style.backgroundColor == "red" && A3.style.backgroundColor == "red"){
+	if (
+		(A1.style.backgroundColor == "red" && A2.style.backgroundColor == "red" && A3.style.backgroundColor == "red")||
+		(B1.style.backgroundColor == "red" && B2.style.backgroundColor == "red" && B3.style.backgroundColor == "red")||
+		(C1.style.backgroundColor == "red" && C2.style.backgroundColor == "red" && C3.style.backgroundColor == "red")||
+		(A1.style.backgroundColor == "red" && B1.style.backgroundColor == "red" && C1.style.backgroundColor == "red")||
+		(A2.style.backgroundColor == "red" && B2.style.backgroundColor == "red" && C2.style.backgroundColor == "red")||
+		(A3.style.backgroundColor == "red" && B3.style.backgroundColor == "red" && C3.style.backgroundColor == "red")||
+		(A1.style.backgroundColor == "red" && B2.style.backgroundColor == "red" && C3.style.backgroundColor == "red")||
+		(A3.style.backgroundColor == "red" && B2.style.backgroundColor == "red" && C1.style.backgroundColor == "red")
+	){
 		console.log("Red team wins!")
-	//row2
-	} else if (B1.style.backgroundColor == "red" && B2.style.backgroundColor == "red" && B3.style.backgroundColor == "red"){
-		console.log("Red team wins!")
-	//row3
-	} else if (C1.style.backgroundColor == "red" && C2.style.backgroundColor == "red" && C3.style.backgroundColor == "red"){
-		console.log("Red team wins!")
-	//column1
-	} else if (A1.style.backgroundColor == "red" && B1.style.backgroundColor == "red" && C1.style.backgroundColor == "red"){
-		console.log("Red team wins!")
-	//column2
-	} else if (A2.style.backgroundColor == "red" && B2.style.backgroundColor == "red" && C2.style.backgroundColor == "red"){
-		console.log("Red team wins!")
-	//column3
-	} else if (A3.style.backgroundColor == "red" && B3.style.backgroundColor == "red" && C3.style.backgroundColor == "red"){
-		console.log("Red team wins!")
-	//diagonal from top left
-	} else if (A1.style.backgroundColor == "red" && B2.style.backgroundColor == "red" && C3.style.backgroundColor == "red"){
-		console.log("Red team wins!")
-	//diagonal from top right
-	} else if (A3.style.backgroundColor == "red" && B2.style.backgroundColor == "red" && C1.style.backgroundColor == "red"){
-		console.log("Red team wins!")
+	} else if (
+		(A1.style.backgroundColor == "blue" && A2.style.backgroundColor == "blue" && A3.style.backgroundColor == "blue")||
+		(B1.style.backgroundColor == "blue" && B2.style.backgroundColor == "blue" && B3.style.backgroundColor == "blue")||
+		(C1.style.backgroundColor == "blue" && C2.style.backgroundColor == "blue" && C3.style.backgroundColor == "blue")||
+		(A1.style.backgroundColor == "blue" && B1.style.backgroundColor == "blue" && C1.style.backgroundColor == "blue")||
+		(A2.style.backgroundColor == "blue" && B2.style.backgroundColor == "blue" && C2.style.backgroundColor == "blue")||
+		(A3.style.backgroundColor == "blue" && B3.style.backgroundColor == "blue" && C3.style.backgroundColor == "blue")||
+		(A1.style.backgroundColor == "blue" && B2.style.backgroundColor == "blue" && C3.style.backgroundColor == "blue")||
+		(A3.style.backgroundColor == "blue" && B2.style.backgroundColor == "blue" && C1.style.backgroundColor == "blue")
+	){
+		console.log("Blue team wins!")
 	} else {
-		console.log("blah blah blah")
+		console.log("It's a draw!")
 	}
 };
+
+determineWinner();
 
 //eventlisteners & determine if it's red or blue
 
