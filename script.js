@@ -18,7 +18,7 @@ let winner = document.querySelector("h2");
 const button = document.querySelector("button");
 let redOrBlue = 0;
 
-console.log(boxes);
+// console.log(boxes);
 
 //determine all scenarios; conditional statement
 function determineWinner () {
@@ -43,9 +43,23 @@ function determineWinner () {
 		(A3.style.backgroundColor == "blue" && B3.style.backgroundColor == "blue" && C3.style.backgroundColor == "blue")||
 		(A1.style.backgroundColor == "blue" && B2.style.backgroundColor == "blue" && C3.style.backgroundColor == "blue")||
 		(A3.style.backgroundColor == "blue" && B2.style.backgroundColor == "blue" && C1.style.backgroundColor == "blue")
-	){
+	){ 
 		winner.innerText = "BLUE TEAM WINS!";
 		turn.style.display = "none";
+	} else if ( //this isn't working; logs every time a tile is clicked
+		A1.style.backgroundColor !== "" &&
+		A2.style.backgroundColor !== "" &&
+		A3.style.backgroundColor !== "" &&
+		B1.style.backgroundColor !== "" &&
+		B2.style.backgroundColor !== "" &&
+		B3.style.backgroundColor !== "" &&
+		C1.style.backgroundColor !== "" &&
+		C2.style.backgroundColor !== "" &&
+		C3.style.backgroundColor !== ""
+	){
+		winner.innerText = "It's a tie!";
+		turn.style.display = "none";
+		console.log("It's a tie!")
 	} else {
 		console.log("Keep Playing!")
 	}
