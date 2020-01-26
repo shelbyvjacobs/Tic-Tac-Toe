@@ -1,6 +1,3 @@
-// Pseudocode
-
-// 	create a variable for each box
 const gameBoard = document.querySelector("#gameBoard");
 const boxes = document.querySelectorAll(".box");
 const A1 = document.querySelector("#A1");
@@ -12,15 +9,19 @@ const B3 = document.querySelector("#B3");
 const C1 = document.querySelector("#C1");
 const C2 = document.querySelector("#C2");
 const C3 = document.querySelector("#C3");
-const turnSpan = document.querySelector("#turnSpan");
 let turn = document.querySelector("#turn");
 let winner = document.querySelector("h2");
 const button = document.querySelector("button");
 let redOrBlue = 0;
 
-// console.log(boxes);
+function addEventListenersToBoxes(){
+	for (let i=0; i<boxes.length; i++){
+		boxes[i].addEventListener("click", setBackground);
+	}
+};
 
-//determine all scenarios; conditional statement
+addEventListenersToBoxes();
+
 function determineWinner () {
 	if (
 		(A1.style.backgroundColor == "red" && A2.style.backgroundColor == "red" && A3.style.backgroundColor == "red")||
@@ -46,7 +47,7 @@ function determineWinner () {
 	){ 
 		winner.innerText = "BLUE TEAM WINS!";
 		turn.style.display = "none";
-	} else if ( //this isn't working; logs every time a tile is clicked
+	} else if (
 		A1.style.backgroundColor !== "" &&
 		A2.style.backgroundColor !== "" &&
 		A3.style.backgroundColor !== "" &&
@@ -59,41 +60,33 @@ function determineWinner () {
 	){
 		winner.innerText = "It's a tie!";
 		turn.style.display = "none";
-		console.log("It's a tie!")
+	}
+};
+
+function setBackground (evt){
+	evt.preventDefault();
+	if (redOrBlue%2 === 0){
+		this.style.backgroundColor = "red";
+		determineWinner();
+		redOrBlue = redOrBlue +=1;
+		turn.innerText = "Blue team's turn.";
+		evt.target.removeEventListener("click", setBackground);
 	} else {
-		console.log("Keep Playing!")
-	}
-};
+		this.style.backgroundColor = "blue";
+		determineWinner();
+		redOrBlue = redOrBlue +=1;
+		turn.innerText = "Red team's turn.";
+		evt.target.removeEventListener("click", setBackground);
+	} 
+}
 
-//eventlisteners & determine if it's red or blue; don't change background once selected
-for (let i=0; i<boxes.length; i++){
-	boxes[i].addEventListener("click", setBackground);
-	function setBackground (evt){
-		evt.preventDefault();
-		if (redOrBlue%2 === 0){
-			this.style.backgroundColor = "red";
-			determineWinner();
-			redOrBlue = redOrBlue +=1;
-			turn.innerText = "Blue team's turn.";
-			evt.target.removeEventListener("click", setBackground);
-			console.log("clicked!")
-		} else {
-			this.style.backgroundColor = "blue";
-			determineWinner();
-			redOrBlue = redOrBlue +=1;
-			turn.innerText = "Red team's turn.";
-			evt.target.removeEventListener("click", setBackground);
-			console.log("clicked!")
-		} 
-	}
-};
+function resetGame(){
+	for (let i=0; i<boxes.length; i++){
+		button.addEventListener("click", function(evt){
+			evt.preventDefault();
+			location.reload();
+		})
+	}	
+}
 
-// reset (play again) button
-for (let i=0; i<boxes.length; i++){
-	button.addEventListener("click", function(evt){
-		evt.preventDefault();
-		location.reload();
-	})
-};
-
-
+resetGame();
